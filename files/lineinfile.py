@@ -248,7 +248,7 @@ def present(module, dest, regexp, line, insertafter, insertbefore, create,
         b_lines = f.readlines()
         f.close()
 
-    if module._diff:
+    if module._diff and not module.no_log:
         diff['before'] = to_native(b('').join(b_lines))
 
     if regexp is not None:
@@ -327,7 +327,7 @@ def present(module, dest, regexp, line, insertafter, insertbefore, create,
         msg = 'line added'
         changed = True
 
-    if module._diff:
+    if module._diff and not module.no_log:
         diff['after'] = to_native(b('').join(b_lines))
 
     backupdest = ""

@@ -166,7 +166,7 @@ def main():
     if result[1] > 0 and contents != result[0]:
         msg = '%s replacements made' % result[1]
         changed = True
-        if module._diff:
+        if module._diff and not module.no_log:
             res_args['diff'] = {
                 'before_header': dest,
                 'before': contents,
